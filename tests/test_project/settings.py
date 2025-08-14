@@ -39,6 +39,4 @@ TEMPLATES = [
     }
 ]
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
-
 djp.settings(globals())

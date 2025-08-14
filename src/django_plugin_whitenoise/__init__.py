@@ -16,7 +16,7 @@ def settings(current_settings: dict):
     # Static files but be set up to *some* directory/path
     current_settings.setdefault(
         "STATIC_ROOT",
-        current_settings["BASE_DIR"] / "staticfiles",
+        current_settings["BASE_DIR"] / "collected_static",
     )
     current_settings.setdefault("STATIC_URL", "static/")
 
@@ -47,3 +47,8 @@ def settings(current_settings: dict):
 
     # https://whitenoise.readthedocs.io/en/latest/django.html#WHITENOISE_KEEP_ONLY_HASHED_FILES
     current_settings.setdefault("WHITENOISE_KEEP_ONLY_HASHED_FILES", True)
+
+    # A reasonable default for project-wide static files
+    current_settings.setdefault(
+        "STATICFILES_DIRS", [current_settings["BASE_DIR"] / "static"]
+    )

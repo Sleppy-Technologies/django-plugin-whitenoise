@@ -19,7 +19,14 @@ pip install django-plugin-whitenoise
 
 ## Usage
 
-The plugin sets the `WHITENOISE_ROOT` setting to `BASE_DIR / "public"` for serving files like `robots.txt` and favicons at the root of the site. The plugin sets `WHITENOISE_KEEP_ONLY_HASHED_FILES = True` to include only useful copies of the static files. Override these settings as desired after the `djp.settings(globals())` call.
+The plugin sets defaults for the following settings if they are found to be unset. This completely configures static file handling so you should have a working static files process just by installing the plugin.
+
+- `WHITENOISE_ROOT` defaults to `BASE_DIR / "public"`. Put files like `robots.txt` and favicons here to serve them at the root of the site.
+- `WHITENOISE_KEEP_ONLY_HASHED_FILES` defaults to `True` to include only useful copies of the static files.
+- `STATICFILES_DIRS` defaults to `[BASE_DIR / "static"]`.Put project-wide static files here.
+- `STATIC_ROOT` and `STATIC_URL` are set to reasonable values.
+
+Override these settings as desired after the `djp.settings(globals())` call.
 
 No further configuration is needed, refer to [`whitenoise` documentation](https://whitenoise.readthedocs.io/en/latest/) to learn about your new capabilities.
 
